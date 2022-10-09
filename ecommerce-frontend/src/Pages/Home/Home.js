@@ -5,11 +5,17 @@ import { useState } from "react"
 
 export default function Home() {
     const [search, setSearch] = useState('')
+    const [cart, setCart] = useState([])
     const products = useRequestData([], `${BASE_URL}products`)
 
     const handleSearch = (event) => {
         setSearch(event.target.value)
       }
+
+      const addItemToCart = (id, name, price, qty) => {
+        const itemObject = {id, name, price, qty}
+        setCart([...cart, itemObject])
+    }
 
     const showProducts = products.filter((product) => {
         return product.name
@@ -18,7 +24,9 @@ export default function Home() {
     })
     .map((product, index) => {
         return (
-            <CardProduct key={index} product={product} />
+            <>
+            <CardProduct key={index} product={product} addItemToCart={addItemToCart}/>
+            </>
         )
     })
     return (
