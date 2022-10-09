@@ -1,4 +1,4 @@
-export default function CartItems({product, addToCart}) {
+export default function CartItems({product, addToCart, removeFromCart, removeItemToCart}) {
 
 
     return (
@@ -7,8 +7,9 @@ export default function CartItems({product, addToCart}) {
             <p>{product.name}</p>
             <p>{product.price.toLocaleString('pt-br', {style: 'currency', currency:'BRL'})}</p>
             <p>x {product.quantity}</p>
+            <button onClick={() => removeFromCart(product) }> -</button>
             <button onClick={() => addToCart(product)}>+</button>
-            <button>Remover item</button>
+            <button onClick={() => removeItemToCart(product)}>Remover item</button>
         </div>
     )
 }

@@ -7,13 +7,14 @@ const GlobalState = (props) => {
 
     const addToCart = (productToAdd) => {
         const productFoundIndex = cart.findIndex((productInCart) => {
-            return productInCart.name === productToAdd.name})
+            return productInCart.name === productToAdd.name
+        })
         if (productFoundIndex >= 0) {
-            const newCart =  [...cart ]
+            const newCart = [...cart]
             newCart[productFoundIndex].quantity += 1
             setCart(newCart)
         } else {
-            const newCart = [...cart ]
+            const newCart = [...cart]
             const newProduct = {
                 name: productToAdd.name,
                 price: productToAdd.price,
@@ -24,12 +25,40 @@ const GlobalState = (props) => {
         }
     }
 
+    const removeFromCart = (productToRemove) => {
+        if (productToRemove.quantity > 1) {
+            const newCart = cart.map((product) => {
+                if (product.name === productToRemove.name) {
+                    product.quantity -= 1
+                }
+                return product
+            })
+            setCart(newCart)
+        } else {
+            const newCart = cart.filter((product) => {
+                return product.name !== productToRemove.name
+            })
+            setCart(newCart)
+        }
+    }
+
+    const removeItemToCart = (productRemove) => {
+        const newCart = cart.filter((product) => {
+            return product.name !== productRemove.name
+        })
+        setCart(newCart)
+    }
+
+
+
     const Provider = GlobalContext.Provider
 
     const values = {
         cart,
         setCart,
-        addToCart
+        addToCart,
+        removeFromCart,
+        removeItemToCart
     }
 
     return (
