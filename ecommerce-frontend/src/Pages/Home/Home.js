@@ -1,11 +1,12 @@
 import CardProduct from "../../Components/CardProduct/CardProduct"
 import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import GlobalContext from "../../Global/GlobalContext"
 
 export default function Home() {
     const [search, setSearch] = useState('')
-    const [cart, setCart] = useState([])
+    const { cart, setCart, addToCart } = useContext(GlobalContext)
     const products = useRequestData([], `${BASE_URL}products`)
 
     const handleSearch = (event) => {
@@ -19,9 +20,11 @@ export default function Home() {
     })
         .map((product, index) => {
             return (
-                <>
-                    <CardProduct key={index} product={product} addItemToCart={addItemToCart} />
-                </>
+                <div key={index} >
+                    <CardProduct 
+                    product={product} 
+                    addToCart={addToCart} />
+                </div>
             )
         })
     return (
