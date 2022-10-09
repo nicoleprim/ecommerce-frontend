@@ -4,6 +4,7 @@ import useRequestData from '../Hooks/useRequestData'
 
 const GlobalState = (props) => {
     const [cart, setCart] = useState([])
+    const [total, setTotal] = useState(0)
 
     const addToCart = (productToAdd) => {
         const productFoundIndex = cart.findIndex((productInCart) => {
@@ -49,7 +50,14 @@ const GlobalState = (props) => {
         setCart(newCart)
     }
 
+    const calculateTotal = () => {
+        const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
+        setTotal(total)
+    }
 
+    const clearCart = () => {
+        setCart([])
+    }
 
     const Provider = GlobalContext.Provider
 
@@ -58,7 +66,11 @@ const GlobalState = (props) => {
         setCart,
         addToCart,
         removeFromCart,
-        removeItemToCart
+        removeItemToCart,
+        calculateTotal,
+        clearCart,
+        total,
+        setTotal
     }
 
     return (

@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-export default function useForm(inicialState) {
-    const [form, setform] = useState(inicialState)
-
+export default function useForm(initialState) {
+    const [form, setform] = useState(initialState)
 
     const handleChange = (event) => {
         const { name, value } = event.target
@@ -10,9 +9,9 @@ export default function useForm(inicialState) {
     }
 
     const cleanFields = () => {
-        setform(inicialState)
+        setform(initialState)
     }
 
-    return { form, handleChange, setform, cleanFields }
+    return { form, handleChange, cleanFields }
 
 }
