@@ -1,9 +1,10 @@
+import Router from "./Routes/Router";
 
 function App() {
   return (
-    <div>
-      Ecommerce Shopper
-    </div>
+    <>
+      <Router />
+    </>
   );
 }
 

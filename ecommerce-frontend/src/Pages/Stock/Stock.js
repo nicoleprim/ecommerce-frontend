@@ -1,5 +1,7 @@
 export default function Stock() {
-    <div>
-        Stock
-    </div>
+    return (
+        <div>
+            Stock
+        </div>
+    )
 }

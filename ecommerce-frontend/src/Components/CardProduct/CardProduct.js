@@ -1,5 +1,7 @@
 export default function CardProduct() {
-    <div>
-        CardProduct
-    </div>
+    return (
+        <div>
+            CardProduct
+        </div>
+    )
 }
