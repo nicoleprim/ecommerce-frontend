@@ -1,7 +1,8 @@
-export default function CardProduct() {
+export default function CardProduct(props) {
     return (
         <div>
-            CardProduct
+            <p>{props.product.name}</p>
+            <p>{props.product.price}</p>
         </div>
     )
 }
