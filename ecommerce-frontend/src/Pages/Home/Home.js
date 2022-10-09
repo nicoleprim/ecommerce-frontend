@@ -10,28 +10,23 @@ export default function Home() {
 
     const handleSearch = (event) => {
         setSearch(event.target.value)
-      }
-
-      const addItemToCart = (id, name, price, qty) => {
-        const itemObject = {id, name, price, qty}
-        setCart([...cart, itemObject])
     }
 
     const showProducts = products.filter((product) => {
         return product.name
-        .toLowerCase()
-        .includes(search.toLowerCase())
+            .toLowerCase()
+            .includes(search.toLowerCase())
     })
-    .map((product, index) => {
-        return (
-            <>
-            <CardProduct key={index} product={product} addItemToCart={addItemToCart}/>
-            </>
-        )
-    })
+        .map((product, index) => {
+            return (
+                <>
+                    <CardProduct key={index} product={product} addItemToCart={addItemToCart} />
+                </>
+            )
+        })
     return (
         <div>
-            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto"/>
+            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
             {showProducts}
         </div>
     )
