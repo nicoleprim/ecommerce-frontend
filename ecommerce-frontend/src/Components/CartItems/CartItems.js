@@ -1,9 +1,9 @@
-export default function CartItems({productsCart}) {
+export default function CartItems() {
 
 
     return (
         <div>
-            {productsCart.map((cartItem, index) => <p>item</p>)}
+            Itens do carrinho
         </div>
     )
 }

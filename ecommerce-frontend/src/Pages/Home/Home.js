@@ -31,7 +31,7 @@ export default function Home() {
     })
     return (
         <div>
-            <input onChange={handleSearch} value={search} />
+            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto"/>
             {showProducts}
         </div>
     )

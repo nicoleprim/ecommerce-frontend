@@ -25,8 +25,7 @@ export default function Stock() {
         })
     return (
         <div>
-            Stock
-            <input onChange={handleSearch} value={search} />
+            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
             {showStock}
         </div>
     )
