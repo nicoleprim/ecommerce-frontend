@@ -26,13 +26,11 @@ export const ContainerCard = styled.div`
         padding: 6px 12px;
         text-align: center;
         color: rgb(45, 167, 122);
-        font-size: 16px;
         font-weight: bold;
         cursor: pointer;
         height: 40px;
-        font-size: 1rem;
+        font-size: 1.1em;
         font-family: 'Lato', sans-serif;
-        font-weight: 00;
         :hover{
             background-color: rgb(45, 167, 122);
             color: rgb(255, 255, 255);

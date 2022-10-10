@@ -16,7 +16,7 @@ export const ContainerCard = styled.div`
 
 export const ContainerItemCard = styled.div`
     display: flex;
-    width: 25em;
+    width: 20em;
     border: 0.3px solid rgb(0, 45, 98);
     box-shadow: 3px 2px 1px rgb(0, 45, 98);
     padding: 2em;

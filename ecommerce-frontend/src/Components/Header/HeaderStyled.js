@@ -17,7 +17,7 @@ export const ContainerButton = styled.div`
     gap: 1rem;
     button{
         background-color: rgb(249, 249, 249);
-        border: 1px solid rgb(226, 226, 226);
+        border: 1px solid rgb(0, 45, 98);
         width: 8em;
         border-radius: 8px;
         padding: 5px 10px;
