@@ -8,7 +8,7 @@ export const ContainerStock = styled.section`
 
 export const Input = styled.input`
     margin: 2rem;
-    width: 40em;
+    width: 40rem;
     height: 2em;
     border-radius: 1em;
     padding: 0.6em;
@@ -16,11 +16,13 @@ export const Input = styled.input`
     font-size: 1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+    @media screen and (max-width: 600px) {
+        width: 20rem;
+    }
 `
 
 export const ContainerCard = styled.div`
     display: flex;
-    width: 90em;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
@@ -48,5 +50,11 @@ export const ContainerItemCard = styled.div`
         font-size: 1.3rem;
         font-family: 'Lato', sans-serif;
         font-weight: 400;
+    }
+    p{
+        color: rgb(184, 1, 7);
+        font-weight: 700;
+        font-size: 1.1em;
+        font-family: 'Lato', sans-serif;
     }
 `

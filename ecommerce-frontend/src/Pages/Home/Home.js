@@ -9,7 +9,7 @@ export default function Home() {
     const [search, setSearch] = useState('')
     const { addToCart } = useContext(GlobalContext)
     const products = useRequestData([], `${BASE_URL}products`)
-
+    
     const handleSearch = (event) => {
         setSearch(event.target.value)
     }

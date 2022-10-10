@@ -20,7 +20,7 @@ export default function Stock() {
             return (
                 <ContainerItemCard key={index}>
                     <h3>{product.name}</h3>
-                    <h4>Quantidade em estoque: {product.qty_stock}</h4>
+                    {product.qty_stock > 0 ? <h4>Quantidade em estoque: {product.qty_stock}</h4> : <p>Produto sem estoque</p>}
                 </ContainerItemCard>
             )
         })

@@ -10,6 +10,11 @@ export const ContainerHeader = styled.div`
         height: 6em;
         cursor: pointer;
     }
+    @media screen and (max-width: 600px) {
+        img{
+            height: 4rem;
+        }
+    }
 `
 
 export const ContainerButton = styled.div`
@@ -33,6 +38,12 @@ export const ContainerButton = styled.div`
         :hover{
             background-color: rgb(0, 45, 98);
             color: rgb(249, 249, 249);
+        }
+    }
+    @media screen and (max-width: 600px) {
+        button{
+            width: 8em;
+            font-size: 0.8rem;
         }
     }
 `

@@ -15,7 +15,6 @@ export const ContainerItemCart = styled.div `
 
 export const ContainerCard = styled.div`
     display: flex;
-    width: 100em;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
@@ -43,6 +42,9 @@ export const Tittle = styled.h2`
     font-size: 1.8rem;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
+    @media screen and (max-width: 600px) {
+        width: 15em;
+    }
 `
 
 export const ContainerForm = styled.form`
@@ -72,6 +74,9 @@ export const ContainerForm = styled.form`
         font-size: 1rem;
         font-family: 'Lato', sans-serif;
         font-weight: 400;
+        @media screen and (max-width: 600px) {
+        width: 20rem;
+        }
     }
 `
 
@@ -118,6 +123,7 @@ export const EmptyCart = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     h2{
         color: #666;
         font-size: 1.8rem;
@@ -129,7 +135,6 @@ export const EmptyCart = styled.div`
         font-size: 1.5rem;
         font-family: 'Lato', sans-serif;
         font-weight: 700;
-
     }
     h4{
         color: rgb(45, 167, 122);

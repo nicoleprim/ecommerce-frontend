@@ -7,7 +7,7 @@ export default function CardProduct({product, addToCart}) {
         <ContainerCard>
             <h4>{product.name}</h4>
             <h5>{product.price.toLocaleString('pt-br', {style: 'currency', currency:'BRL'})}</h5>
-            <button onClick={() => addToCart(product)}>Adicionar ao carrinho</button>
+            {product.qty_stock > 0 ? <button onClick={() => addToCart(product)}>Adicionar ao carrinho</button> : <p>Produto sem estoque</p>}
         </ContainerCard>
     )
 }

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const ContainerCard = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
     text-align: center;
     align-items: center;
     h4{
@@ -35,5 +34,11 @@ export const ContainerCard = styled.div`
             background-color: rgb(45, 167, 122);
             color: rgb(255, 255, 255);
         }
+    }
+    p{
+        color: rgb(184, 1, 7);
+        font-weight: 700;
+        font-size: 1.1em;
+        font-family: 'Lato', sans-serif;
     }
 `

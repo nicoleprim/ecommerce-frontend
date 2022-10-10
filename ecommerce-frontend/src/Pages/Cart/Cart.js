@@ -90,9 +90,6 @@ export default function Cart() {
                     <button onClick={() => goToHome(navigate)}>Conferir produtos</button>
                 </EmptyCart>
             }
-
-
-
         </ContainerCart>
     )
 }

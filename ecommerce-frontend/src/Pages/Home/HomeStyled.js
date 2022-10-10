@@ -8,7 +8,6 @@ export const ContainerHome = styled.section`
 
 export const ContainerCard = styled.div`
     display: flex;
-    width: 100em;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
@@ -28,7 +27,7 @@ export const ContainerItemCard = styled.div`
 
 export const Input = styled.input`
     margin: 2rem;
-    width: 40em;
+    width: 40rem;
     height: 2em;
     border-radius: 1em;
     padding: 0.6em;
@@ -36,4 +35,7 @@ export const Input = styled.input`
     font-size: 1rem;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+    @media screen and (max-width: 600px) {
+        width: 20rem;
+    }
 `

@@ -13,10 +13,10 @@ const GlobalState = (props) => {
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
-      })
+    })
 
     const addToCart = (productToAdd) => {
         const productFoundIndex = cart.findIndex((productInCart) => {
@@ -29,7 +29,7 @@ const GlobalState = (props) => {
             Toast.fire({
                 icon: 'success',
                 title: 'Produto adicionado ao carrinho'
-              })
+            })
         } else {
             const newCart = [...cart]
             const newProduct = {
@@ -42,7 +42,7 @@ const GlobalState = (props) => {
             Toast.fire({
                 icon: 'success',
                 title: 'Produto adicionado ao carrinho'
-              })
+            })
         }
     }
 
@@ -58,7 +58,7 @@ const GlobalState = (props) => {
             Toast.fire({
                 icon: 'success',
                 title: 'Produto removido do carrinho'
-              })
+            })
         } else {
             const newCart = cart.filter((product) => {
                 return product.name !== productToRemove.name
@@ -67,7 +67,7 @@ const GlobalState = (props) => {
             Toast.fire({
                 icon: 'success',
                 title: 'Produto removido do carrinho'
-              })
+            })
         }
     }
 
@@ -79,7 +79,7 @@ const GlobalState = (props) => {
         Toast.fire({
             icon: 'success',
             title: 'Produto removido do carrinho'
-          })
+        })
     }
 
     const calculateTotal = () => {
