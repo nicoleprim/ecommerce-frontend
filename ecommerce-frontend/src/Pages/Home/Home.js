@@ -3,6 +3,7 @@ import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
 import { useContext, useState } from "react"
 import GlobalContext from "../../Global/GlobalContext"
+import { ContainerCard, ContainerItemCard } from "./HomeStyled"
 
 export default function Home() {
     const [search, setSearch] = useState('')
@@ -20,17 +21,19 @@ export default function Home() {
     })
         .map((product, index) => {
             return (
-                <div key={index} >
+                <ContainerItemCard key={index} >
                     <CardProduct 
                     product={product} 
                     addToCart={addToCart} />
-                </div>
+                </ContainerItemCard>
             )
         })
     return (
         <div>
             <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
+            <ContainerCard>
             {showProducts}
+            </ContainerCard>
         </div>
     )
 }
