@@ -1,13 +1,17 @@
 import axios from "axios"
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import CartItems from "../../Components/CartItems/CartItems"
 import { BASE_URL } from "../../Constants/url"
 import GlobalContext from "../../Global/GlobalContext"
 import useForm from "../../Hooks/useForm"
+import Swal from 'sweetalert2'
+import { goToHome } from "../../Routes/Coordinator"
+import { useNavigate } from "react-router-dom"
 
 export default function Cart() {
     const { cart, setCart, addToCart, removeFromCart, removeItemToCart, calculateTotal, clearCart, total } = useContext(GlobalContext)
     const { form, handleChange, cleanFields } = useForm({ userName: '', deliveryDate: '' })
+    const navigate = useNavigate()
 
     useEffect(() => {
         calculateTotal()
@@ -20,13 +24,23 @@ export default function Cart() {
             products: cart
         }
         try {
-            console.log("entrou no try")
-
             const res = await axios.post(`${BASE_URL}orders/createorder`, body)
-            alert(res.data.message)
-            console.log(res.data.orders)
-        } catch (err) {
-            console.log(err)
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: res.data.message,
+                showConfirmButton: false,
+                timer: 2000
+              })
+            setCart([])
+        } catch(err) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Parece que algo deu errado:',
+                text: err.response.data.message,
+                showConfirmButton: true,
+                confirmButtonColor: '#960018'
+            })
         }
     }
 
@@ -62,7 +76,12 @@ export default function Cart() {
                     <button onClick={clearCart}>Limpar carrinho</button>
                 </>
                 :
-                <p>Ainda não foram adicionados produtos ao carrinho</p>
+                <>
+                <p>O seu carrinho está vazio</p>
+                <p>Confira os nossos produtos e agende sua entrega</p>
+                <p>Ficaremos felizes em te atender</p>
+                <button onClick={() => goToHome(navigate)}>Conferir produtos</button>
+                </>
             }
 
 
