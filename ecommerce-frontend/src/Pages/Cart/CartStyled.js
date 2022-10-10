@@ -4,8 +4,8 @@ export const ContainerItemCart = styled.div `
     display: flex;
     width: 20em;
     height: 20em;
-    border: 0.3px solid rgb(0, 45, 98);
-    box-shadow: 3px 2px 1px rgb(0, 45, 98);
+    border: 1px solid rgba(226, 226, 226, 0.38);
+    box-shadow: 3px 2px 2px rgba(226, 226, 226, 0.38);
     padding: 1em;
     border-radius: 10px;
     align-items: center;
