@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
+import { ContainerCard, ContainerItemCard, ContainerStock, Input } from "./StockStyled"
 
 export default function Stock() {
     const [search, setSearch] = useState('')
@@ -17,16 +18,18 @@ export default function Stock() {
     })
         .map((product, index) => {
             return (
-                <div key={index}>
-                    <p>{product.name}</p>
-                    <p>Quantidade em estoque: {product.qty_stock}</p>
-                </div>
+                <ContainerItemCard key={index}>
+                    <h3>{product.name}</h3>
+                    <h4>Quantidade em estoque: {product.qty_stock}</h4>
+                </ContainerItemCard>
             )
         })
     return (
-        <div>
-            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
+        <ContainerStock>
+            <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
+            <ContainerCard>
             {showStock}
-        </div>
+            </ContainerCard>
+        </ContainerStock>
     )
 }
