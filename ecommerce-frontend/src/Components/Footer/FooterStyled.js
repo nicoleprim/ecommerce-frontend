@@ -6,7 +6,7 @@ export const ContainerFooter = styled.div`
     justify-content: space-between;
     height: 10em;
     width: 95%;
-    bottom: 0px;
+    margin-top: auto;
     img{
         height: 6em;
         cursor: pointer;
