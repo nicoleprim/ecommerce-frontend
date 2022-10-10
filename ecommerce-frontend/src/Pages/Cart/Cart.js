@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function Cart() {
     const { cart, setCart, addToCart, removeFromCart, removeItemToCart, calculateTotal, clearCart, total } = useContext(GlobalContext)
-    const { form, handleChange, cleanFields } = useForm({ userName: '', deliveryDate: '' })
+    const { form, handleChange } = useForm({ userName: '', deliveryDate: '' })
     const navigate = useNavigate()
 
     useEffect(() => {

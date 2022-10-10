@@ -7,7 +7,7 @@ import { ContainerCard, ContainerHome, ContainerItemCard, Input } from "./HomeSt
 
 export default function Home() {
     const [search, setSearch] = useState('')
-    const { cart, setCart, addToCart } = useContext(GlobalContext)
+    const { addToCart } = useContext(GlobalContext)
     const products = useRequestData([], `${BASE_URL}products`)
 
     const handleSearch = (event) => {
@@ -30,7 +30,7 @@ export default function Home() {
         })
     return (
         <ContainerHome>
-            <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
+            <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" /> 
             <ContainerCard>
             {showProducts}
             </ContainerCard>
