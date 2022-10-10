@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Footer from '../Components/Footer/Footer'
 import Header from '../Components/Header/Header'
 import Cart from '../Pages/Cart/Cart'
 import Home from '../Pages/Home/Home'
@@ -13,6 +14,7 @@ export default function Router() {
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/stock' element={<Stock />} />
             </Routes>
+            <Footer />
         </BrowserRouter>
     )
 }

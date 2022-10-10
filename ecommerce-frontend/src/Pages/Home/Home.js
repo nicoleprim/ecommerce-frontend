@@ -3,7 +3,7 @@ import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
 import { useContext, useState } from "react"
 import GlobalContext from "../../Global/GlobalContext"
-import { ContainerCard, ContainerItemCard } from "./HomeStyled"
+import { ContainerCard, ContainerHome, ContainerItemCard, Input } from "./HomeStyled"
 
 export default function Home() {
     const [search, setSearch] = useState('')
@@ -29,11 +29,11 @@ export default function Home() {
             )
         })
     return (
-        <div>
-            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
+        <ContainerHome>
+            <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
             <ContainerCard>
             {showProducts}
             </ContainerCard>
-        </div>
+        </ContainerHome>
     )
 }
