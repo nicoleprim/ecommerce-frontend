@@ -4,12 +4,13 @@ import useRequestData from "../../Hooks/useRequestData"
 import { useContext, useState } from "react"
 import GlobalContext from "../../Global/GlobalContext"
 import { ContainerCard, ContainerHome, ContainerItemCard, Input } from "./HomeStyled"
+import Loading from '../../Assets/gif-loading.gif'
 
 export default function Home() {
     const [search, setSearch] = useState('')
     const { addToCart } = useContext(GlobalContext)
     const products = useRequestData([], `${BASE_URL}products`)
-    
+
     const handleSearch = (event) => {
         setSearch(event.target.value)
     }
@@ -32,7 +33,7 @@ export default function Home() {
         <ContainerHome>
             <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" /> 
             <ContainerCard>
-            {showProducts}
+            {products.length > 0 ? showProducts : <img src={Loading}/>}
             </ContainerCard>
         </ContainerHome>
     )

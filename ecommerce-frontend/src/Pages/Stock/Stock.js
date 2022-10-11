@@ -2,6 +2,7 @@ import { useState } from "react"
 import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
 import { ContainerCard, ContainerItemCard, ContainerStock, Input } from "./StockStyled"
+import Loading from '../../Assets/gif-loading.gif'
 
 export default function Stock() {
     const [search, setSearch] = useState('')
@@ -28,6 +29,7 @@ export default function Stock() {
         <ContainerStock>
             <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
             <ContainerCard>
+            {products.length > 0 ? showStock : <img src={Loading}/>}
             {showStock}
             </ContainerCard>
         </ContainerStock>
