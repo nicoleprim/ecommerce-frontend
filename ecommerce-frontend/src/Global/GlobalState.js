@@ -18,9 +18,9 @@ const GlobalState = (props) => {
         }
     })
 
-    const addToCart = (productToAdd, id) => {
+    const addToCart = (productToAdd) => {
         const productFoundIndex = cart.findIndex((productInCart) => {
-            return productInCart.name === productToAdd.name
+            return productInCart.id === productToAdd.id
         })
         if (productFoundIndex >= 0) {
             const newCart = [...cart]
@@ -34,6 +34,7 @@ const GlobalState = (props) => {
         } else {
             const newCart = [...cart]
             const newProduct = {
+                id: productToAdd.id,
                 name: productToAdd.name,
                 price: productToAdd.price,
                 quantity: 1
@@ -48,10 +49,10 @@ const GlobalState = (props) => {
         }
     }
 
-    const removeFromCart = (productToRemove, id) => {
+    const removeFromCart = (productToRemove) => {
         if (productToRemove.quantity > 1) {
             const newCart = cart.map((product) => {
-                if (product.name === productToRemove.name) {
+                if (product.id === productToRemove.id) {
                     product.quantity -= 1
                 }
                 return product
@@ -64,7 +65,7 @@ const GlobalState = (props) => {
             localStorage.setItem("cart", JSON.stringify(newCart))
         } else {
             const newCart = cart.filter((product) => {
-                return product.name !== productToRemove.name
+                return product.id !== productToRemove.id
             })
             setCart(newCart)
             Toast.fire({
@@ -75,9 +76,9 @@ const GlobalState = (props) => {
         }
     }
 
-    const removeItemToCart = (productRemove, id) => {
+    const removeItemToCart = (productRemove) => {
         const newCart = cart.filter((product) => {
-            return product.name !== productRemove.name
+            return product.id !== productRemove.id
         })
         setCart(newCart)
         Toast.fire({
