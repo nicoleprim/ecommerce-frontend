@@ -43,7 +43,8 @@ export const Tittle = styled.h2`
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     @media screen and (max-width: 600px) {
-        width: 15em;
+        width: 12em;
+        font-size: 1.7rem;
     }
 `
 
@@ -160,6 +161,17 @@ export const EmptyCart = styled.div`
         :hover{
             background-color: rgb(0, 45, 98);
             color: rgb(249, 249, 249);
+        }
+    }
+    @media screen and (max-width: 600px) {
+        h2{
+            font-size: 1.5rem;
+        }
+        h3{
+            font-size: 1.2rem;
+        }
+        h4{
+            font-size: 1.1rem;
         }
     }
 `
