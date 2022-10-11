@@ -42,7 +42,6 @@ export default function Stock() {
             </Select>
             <ContainerCard>
             {products.length > 0 ? showStock : <img src={Loading}/>}
-            {showStock}
             </ContainerCard>
         </ContainerStock>
     )
