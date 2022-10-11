@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GlobalContext from './GlobalContext'
 import Swal from 'sweetalert2'
 
@@ -18,7 +18,7 @@ const GlobalState = (props) => {
         }
     })
 
-    const addToCart = (productToAdd) => {
+    const addToCart = (productToAdd, id) => {
         const productFoundIndex = cart.findIndex((productInCart) => {
             return productInCart.name === productToAdd.name
         })
@@ -30,6 +30,7 @@ const GlobalState = (props) => {
                 icon: 'success',
                 title: 'Produto adicionado ao carrinho'
             })
+            localStorage.setItem("cart", JSON.stringify(newCart))
         } else {
             const newCart = [...cart]
             const newProduct = {
@@ -43,10 +44,11 @@ const GlobalState = (props) => {
                 icon: 'success',
                 title: 'Produto adicionado ao carrinho'
             })
+            localStorage.setItem("cart", JSON.stringify(newCart))
         }
     }
 
-    const removeFromCart = (productToRemove) => {
+    const removeFromCart = (productToRemove, id) => {
         if (productToRemove.quantity > 1) {
             const newCart = cart.map((product) => {
                 if (product.name === productToRemove.name) {
@@ -59,6 +61,7 @@ const GlobalState = (props) => {
                 icon: 'success',
                 title: 'Produto removido do carrinho'
             })
+            localStorage.setItem("cart", JSON.stringify(newCart))
         } else {
             const newCart = cart.filter((product) => {
                 return product.name !== productToRemove.name
@@ -68,10 +71,11 @@ const GlobalState = (props) => {
                 icon: 'success',
                 title: 'Produto removido do carrinho'
             })
+            localStorage.setItem("cart", JSON.stringify(newCart))
         }
     }
 
-    const removeItemToCart = (productRemove) => {
+    const removeItemToCart = (productRemove, id) => {
         const newCart = cart.filter((product) => {
             return product.name !== productRemove.name
         })
@@ -80,15 +84,23 @@ const GlobalState = (props) => {
             icon: 'success',
             title: 'Produto removido do carrinho'
         })
-    }
-
-    const calculateTotal = () => {
-        const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
-        setTotal(total)
+        localStorage.setItem("cart", JSON.stringify(newCart))
     }
 
     const clearCart = () => {
         setCart([])
+        localStorage.removeItem("cart")
+    }
+
+    useEffect(() => {
+        const renderCart = localStorage.getItem("cart")
+        const renderCartConvert = JSON.parse(renderCart)
+        renderCartConvert && setCart(renderCartConvert)
+    }, [])
+
+    const calculateTotal = () => {
+        const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0)
+        setTotal(total)
     }
 
     const Provider = GlobalContext.Provider
