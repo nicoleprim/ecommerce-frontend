@@ -39,3 +39,21 @@ export const Input = styled.input`
         width: 20rem;
     }
 `
+
+export const Select = styled.select`
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    margin-bottom: 2rem;
+    border-radius: 1em;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    border: 1px solid rgb(45, 167, 122);
+`
+
+export const Option = styled.option`
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: rgb(0, 45, 98);
+`
