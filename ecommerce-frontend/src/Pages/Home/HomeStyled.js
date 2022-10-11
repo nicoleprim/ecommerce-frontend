@@ -50,10 +50,3 @@ export const Select = styled.select`
     font-weight: 300;
     border: 1px solid rgb(45, 167, 122);
 `
-
-export const Option = styled.option`
-    font-size: 1rem;
-    font-family: 'Lato', sans-serif;
-    font-weight: 400;
-    color: rgb(0, 45, 98);
-`

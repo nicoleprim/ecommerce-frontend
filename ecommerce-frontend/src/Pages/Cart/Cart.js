@@ -34,6 +34,7 @@ export default function Cart() {
                 timer: 2000
             })
             setCart([])
+            localStorage.removeItem("cart")
         } catch (err) {
             Swal.fire({
                 icon: 'error',

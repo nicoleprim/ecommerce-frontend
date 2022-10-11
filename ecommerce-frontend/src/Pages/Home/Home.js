@@ -3,12 +3,12 @@ import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
 import { useContext, useState } from "react"
 import GlobalContext from "../../Global/GlobalContext"
-import { ContainerCard, ContainerHome, ContainerItemCard, Input, Option, Select } from "./HomeStyled"
+import { ContainerCard, ContainerHome, ContainerItemCard, Input, Select } from "./HomeStyled"
 import Loading from '../../Assets/gif-loading.gif'
 
 export default function Home() {
     const [search, setSearch] = useState('')
-    const [ordination, setOrdination] = useState('')
+    const [ordination, setOrdination] = useState('Crescente')
     const { addToCart } = useContext(GlobalContext)
     const products = useRequestData([], `${BASE_URL}products`)
 
@@ -42,8 +42,8 @@ export default function Home() {
         <ContainerHome>
             <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
             <Select onChange={handleOrdination} value={ordination}>
-                <Option value="Crescente">Crescente</Option>
-                <Option value="Decrescente">Decrescente</Option>
+                <option value="Crescente">Crescente</option>
+                <option value="Decrescente">Decrescente</option>
             </Select>
             <ContainerCard>
                 {products.length > 0 ? showProducts : <img src={Loading} />}
