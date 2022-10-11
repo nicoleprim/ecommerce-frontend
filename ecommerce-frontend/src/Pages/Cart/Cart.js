@@ -7,10 +7,11 @@ import useForm from "../../Hooks/useForm"
 import Swal from 'sweetalert2'
 import { goToHome } from "../../Routes/Coordinator"
 import { useNavigate } from "react-router-dom"
+import { ButtonClear, ButtonSubmit, ContainerCard, ContainerCart, ContainerForm, ContainerItemCart, EmptyCart, Tittle } from "./CartStyled"
 
 export default function Cart() {
     const { cart, setCart, addToCart, removeFromCart, removeItemToCart, calculateTotal, clearCart, total } = useContext(GlobalContext)
-    const { form, handleChange, cleanFields } = useForm({ userName: '', deliveryDate: '' })
+    const { form, handleChange } = useForm({ userName: '', deliveryDate: '' })
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -31,9 +32,9 @@ export default function Cart() {
                 title: res.data.message,
                 showConfirmButton: false,
                 timer: 2000
-              })
+            })
             setCart([])
-        } catch(err) {
+        } catch (err) {
             Swal.fire({
                 icon: 'error',
                 title: 'Parece que algo deu errado:',
@@ -46,46 +47,49 @@ export default function Cart() {
 
     const showCart = cart.map((product, index) => {
         return (
-            <CartItems
-                key={index}
-                product={product}
-                addToCart={addToCart}
-                removeFromCart={removeFromCart}
-                removeItemToCart={removeItemToCart} />
+            <ContainerItemCart key={index}>
+                <CartItems
+                    product={product}
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
+                    removeItemToCart={removeItemToCart} />
+            </ContainerItemCart>
         )
     })
 
     return (
-        <div>
-            Carrinho
+        <ContainerCart>
+            <Tittle>Carrinho de Compras</Tittle>
 
             {cart.length ?
                 <>
-                    {showCart}
-                    <h2>Total: {total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h2>
-
-                    <form>
-                        <label>Nome</label>
+                    <ContainerForm>
+                        <h3>Preencha o formulário para prosseguir:</h3>
+                        <label>Nome *</label>
                         <input name="userName" type="text" onChange={handleChange} value={form.userName} placeholder="Digite seu nome" required />
-                        <label>Data de entrega</label>
+                        <label>Data de entrega *</label>
                         <input name="deliveryDate" type="date" onChange={handleChange} value={form.deliveryDate} required />
-                    </form>
+                    </ContainerForm>
 
-                    <button onClick={submitOrder}> Finalizar compra</button>
+                    <ContainerCard>
+                        {showCart}
+                    </ContainerCard>
 
-                    <button onClick={clearCart}>Limpar carrinho</button>
+                    <h3>Total: {total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })} </h3>
+
+                    <ButtonSubmit onClick={submitOrder}> Finalizar compra</ButtonSubmit>
+
+                    <ButtonClear onClick={clearCart}>Limpar carrinho</ButtonClear>
                 </>
                 :
-                <>
-                <p>O seu carrinho está vazio</p>
-                <p>Confira os nossos produtos e agende sua entrega</p>
-                <p>Ficaremos felizes em te atender</p>
-                <button onClick={() => goToHome(navigate)}>Conferir produtos</button>
-                </>
+                <EmptyCart>
+                    <h2>O seu carrinho está vazio!</h2>
+                    <h3>Confira os nossos produtos e agende sua entrega</h3>
+                    <h3>Qualquer dúvida, entre em contato conosco</h3>
+                    <h4>Ficaremos felizes em te atender =)</h4>
+                    <button onClick={() => goToHome(navigate)}>Conferir produtos</button>
+                </EmptyCart>
             }
-
-
-
-        </div>
+        </ContainerCart>
     )
 }

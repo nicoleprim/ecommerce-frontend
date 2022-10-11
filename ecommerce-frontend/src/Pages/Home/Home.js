@@ -3,10 +3,12 @@ import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
 import { useContext, useState } from "react"
 import GlobalContext from "../../Global/GlobalContext"
+import { ContainerCard, ContainerHome, ContainerItemCard, Input } from "./HomeStyled"
+import Loading from '../../Assets/gif-loading.gif'
 
 export default function Home() {
     const [search, setSearch] = useState('')
-    const { cart, setCart, addToCart } = useContext(GlobalContext)
+    const { addToCart } = useContext(GlobalContext)
     const products = useRequestData([], `${BASE_URL}products`)
 
     const handleSearch = (event) => {
@@ -20,17 +22,19 @@ export default function Home() {
     })
         .map((product, index) => {
             return (
-                <div key={index} >
+                <ContainerItemCard key={index} >
                     <CardProduct 
                     product={product} 
                     addToCart={addToCart} />
-                </div>
+                </ContainerItemCard>
             )
         })
     return (
-        <div>
-            <input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
-            {showProducts}
-        </div>
+        <ContainerHome>
+            <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" /> 
+            <ContainerCard>
+            {products.length > 0 ? showProducts : <img src={Loading}/>}
+            </ContainerCard>
+        </ContainerHome>
     )
 }
