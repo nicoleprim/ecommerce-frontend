@@ -5,6 +5,7 @@ import { useContext, useState } from "react"
 import GlobalContext from "../../Global/GlobalContext"
 import { ContainerCard, ContainerHome, ContainerItemCard, Input, Select } from "./HomeStyled"
 import Loading from '../../Assets/gif-loading.gif'
+import ButtonUp from "../../Components/ButtonUp/ButtonUp"
 
 export default function Home() {
     const [search, setSearch] = useState('')
@@ -48,6 +49,7 @@ export default function Home() {
             <ContainerCard>
                 {products.length > 0 ? showProducts : <img src={Loading} />}
             </ContainerCard>
+            <ButtonUp />
         </ContainerHome>
     )
 }
