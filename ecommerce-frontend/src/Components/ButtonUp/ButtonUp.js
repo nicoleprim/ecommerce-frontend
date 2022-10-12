@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toTopPng from '../../Assets/totop.png'
 import { Button } from "./ButtonUpStyled";
 
 export default function ButtonUp() {
@@ -12,7 +13,7 @@ export default function ButtonUp() {
 
     return (
         <>
-        {pageYPosition > 400 && <Button onClick={() => setPageYPosition(window.scroll(0, 0))}>AO TOPO</Button>}
+            {pageYPosition > 400 && <Button onClick={() => setPageYPosition(window.scroll(0, 0))}><img src={toTopPng} /></Button>}
         </>
     )
 }
