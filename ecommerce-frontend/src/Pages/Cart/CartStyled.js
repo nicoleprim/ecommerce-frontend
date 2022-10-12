@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ContainerItemCart = styled.div `
     display: flex;
     width: 20em;
-    height: 20em;
+    min-height: 22rem;
     border: 1px solid rgba(226, 226, 226, 0.38);
     box-shadow: 3px 2px 2px rgba(226, 226, 226, 0.38);
     padding: 1em;

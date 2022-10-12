@@ -58,3 +58,11 @@ export const ButtonRemove = styled.button`
         font-size: 1.6rem;
     }
 `
+
+export const Total = styled.p`
+        color: #666;
+        font-size: 1rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        padding: 0;
+`
