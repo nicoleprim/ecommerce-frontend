@@ -41,6 +41,21 @@ export const ContainerItemCard = styled.div`
     justify-content: center;
 `
 
+export const Ordination = styled.div`
+    display: flex;
+    text-align: center;
+    gap: 1rem;
+    p{
+        color: rgb(0, 45, 98);
+        font-size: 16px;
+        font-weight: bold;
+        height: 45px;
+        font-size: 1.1rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+    }
+`
+
 export const Select = styled.select`
     padding: 0.5rem;
     margin-top: 0.3rem;

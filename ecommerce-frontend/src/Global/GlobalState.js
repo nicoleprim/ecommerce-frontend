@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import GlobalContext from './GlobalContext'
 import Swal from 'sweetalert2'
+import useRequestData from '../Hooks/useRequestData'
+import { BASE_URL } from '../Constants/url'
 
 const GlobalState = (props) => {
     const [cart, setCart] = useState([])
     const [total, setTotal] = useState(0)
+    const products = useRequestData([], `${BASE_URL}products`)
 
     const Toast = Swal.mixin({
         toast: true,
@@ -24,20 +27,28 @@ const GlobalState = (props) => {
         })
         if (productFoundIndex >= 0) {
             const newCart = [...cart]
-            newCart[productFoundIndex].quantity += 1
-            setCart(newCart)
-            Toast.fire({
-                icon: 'success',
-                title: 'Produto adicionado ao carrinho'
-            })
-            localStorage.setItem("cart", JSON.stringify(newCart))
+            if (productToAdd.qty_stock > newCart[productFoundIndex].quantity) {
+                newCart[productFoundIndex].quantity += 1
+                setCart(newCart)
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Produto adicionado ao carrinho'
+                })
+                localStorage.setItem("cart", JSON.stringify(newCart))
+            } else {
+                Toast.fire({
+                    icon: 'error',
+                    title: 'Quantidade máxima para este item atingida'
+                })
+            }
         } else {
             const newCart = [...cart]
             const newProduct = {
                 id: productToAdd.id,
                 name: productToAdd.name,
                 price: productToAdd.price,
-                quantity: 1
+                quantity: 1,
+                qty_stock: productToAdd.qty_stock
             }
             newCart.push(newProduct)
             setCart(newCart)
@@ -115,7 +126,8 @@ const GlobalState = (props) => {
         calculateTotal,
         clearCart,
         total,
-        setTotal
+        setTotal,
+        products
     }
 
     return (

@@ -2,7 +2,6 @@ import { Add, AddAndRemove, ButtonRemove, ContainerCard, Remove, Total } from ".
 import {MdOutlineAddCircleOutline} from 'react-icons/md'
 import {MdOutlineRemoveCircleOutline} from 'react-icons/md'
 import {FaRegTrashAlt} from 'react-icons/fa'
-import { useEffect, useState } from "react";
 
 export default function CartItems({product, addToCart, removeFromCart, removeItemToCart}) {
 
