@@ -13,7 +13,7 @@ export default function ButtonUp() {
 
     return (
         <>
-            {pageYPosition > 400 && <Button onClick={() => setPageYPosition(window.scroll(0, 0))}><img src={toTopPng} /></Button>}
+            {pageYPosition > 400 && <Button onClick={() => setPageYPosition(window.scroll(0, 0))}><img src={toTopPng} alt="botão voltar ao topo"/></Button>}
         </>
     )
 }

@@ -10,13 +10,13 @@ import { useNavigate } from "react-router-dom"
 import { ButtonClear, ButtonSubmit, ContainerCard, ContainerCart, ContainerForm, ContainerItemCart, EmptyCart, Tittle } from "./CartStyled"
 
 export default function Cart() {
-    const { cart, setCart, addToCart, removeFromCart, removeItemToCart, calculateTotal, clearCart, total } = useContext(GlobalContext)
+    const { cart, setCart, addToCart, removeFromCart, removeItemToCart, calculateTotal, clearCart, total, products } = useContext(GlobalContext)
     const { form, handleChange } = useForm({ userName: '', deliveryDate: '' })
     const navigate = useNavigate()
 
     useEffect(() => {
         calculateTotal()
-    }, [cart])
+    }, [calculateTotal, cart])
 
     const submitOrder = async () => {
         const body = {
@@ -51,6 +51,7 @@ export default function Cart() {
             <ContainerItemCart key={index}>
                 <CartItems
                     product={product}
+                    products={products}
                     addToCart={addToCart}
                     removeFromCart={removeFromCart}
                     removeItemToCart={removeItemToCart} />

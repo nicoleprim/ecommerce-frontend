@@ -1,13 +1,13 @@
-import { useState } from "react"
-import { BASE_URL } from "../../Constants/url"
-import useRequestData from "../../Hooks/useRequestData"
-import { ContainerCard, ContainerItemCard, ContainerStock, Input, Select } from "./StockStyled"
+import { useContext, useState } from "react"
+import { ContainerCard, ContainerItemCard, ContainerStock, Input, Ordination, Select } from "./StockStyled"
 import Loading from '../../Assets/gif-loading.gif'
+import CardStock from "../../Components/CardStock/CardStock"
+import GlobalContext from "../../Global/GlobalContext"
 
 export default function Stock() {
     const [search, setSearch] = useState('')
     const [ordination, setOrdination] = useState('Crescente')
-    const products = useRequestData([], `${BASE_URL}products`)
+    const { products } = useContext(GlobalContext)
 
     const handleSearch = (event) => {
         setSearch(event.target.value)
@@ -18,30 +18,33 @@ export default function Stock() {
     }
 
     const showStock = products
-    .filter((product) => {
-        return product.name
-            .toLowerCase()
-            .includes(search.toLowerCase())
-    })
-    .sort((productA, productB) =>
+        .filter((product) => {
+            return product.name
+                .toLowerCase()
+                .includes(search.toLowerCase())
+        })
+        .sort((productA, productB) =>
             ordination === "Crescente" ? productA.qty_stock - productB.qty_stock : productB.qty_stock - productA.qty_stock)
         .map((product, index) => {
             return (
                 <ContainerItemCard key={index}>
-                    <h3>{product.name}</h3>
-                    {product.qty_stock > 0 ? <h4>Quantidade em estoque: {product.qty_stock}</h4> : <p>Produto sem estoque</p>}
+                    <CardStock
+                        product={product} />
                 </ContainerItemCard>
             )
         })
     return (
         <ContainerStock>
             <Input onChange={handleSearch} value={search} placeholder="Busque pelo nome do produto" />
-            <Select onChange={handleOrdination} value={ordination}>
-                <option value="Crescente">Crescente</option>
-                <option value="Decrescente">Decrescente</option>
-            </Select>
+            <Ordination>
+                <p>Ordene pela quantidade:</p>
+                <Select onChange={handleOrdination} value={ordination}>
+                    <option value="Crescente">Crescente</option>
+                    <option value="Decrescente">Decrescente</option>
+                </Select>
+            </Ordination>
             <ContainerCard>
-            {products.length > 0 ? showStock : <img src={Loading}/>}
+                {products.length > 0 ? showStock : <img src={Loading} alt="gif loading" />}
             </ContainerCard>
         </ContainerStock>
     )

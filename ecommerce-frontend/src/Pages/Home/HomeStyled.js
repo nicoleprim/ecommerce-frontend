@@ -4,6 +4,7 @@ export const ContainerHome = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+
 `
 
 export const ContainerCard = styled.div`
@@ -37,6 +38,21 @@ export const Input = styled.input`
     font-weight: 400;
     @media screen and (max-width: 600px) {
         width: 20rem;
+    }
+`
+
+export const Ordination = styled.div`
+    display: flex;
+    text-align: center;
+    gap: 1rem;
+    p{
+        color: rgb(0, 45, 98);
+        font-size: 16px;
+        font-weight: bold;
+        height: 45px;
+        font-size: 1.1rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
     }
 `
 
