@@ -6,12 +6,14 @@ export const ContainerCard = styled.div`
     text-align: center;
     align-items: center;
     h4{
+        height: 3rem;
         color: #666;
         font-size: 1.2rem;
         font-family: 'Lato', sans-serif;
         font-weight: 700;
     }
     h5{
+        height: 2rem;
         color: rgb(45, 167, 122);
         font-size: 1.5rem;
         font-family: 'Lato', sans-serif;
@@ -27,7 +29,7 @@ export const ContainerCard = styled.div`
         color: rgb(45, 167, 122);
         font-weight: bold;
         cursor: pointer;
-        height: 40px;
+        height: 2.5rem;
         font-size: 1.1em;
         font-family: 'Lato', sans-serif;
         :hover{
@@ -40,5 +42,7 @@ export const ContainerCard = styled.div`
         font-weight: 700;
         font-size: 1.1em;
         font-family: 'Lato', sans-serif;
+        width: 13em;
+        height: 0.7rem;
     }
 `

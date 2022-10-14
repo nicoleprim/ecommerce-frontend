@@ -3,6 +3,7 @@ import { BASE_URL } from "../../Constants/url"
 import useRequestData from "../../Hooks/useRequestData"
 import { ContainerCard, ContainerItemCard, ContainerStock, Input, Select } from "./StockStyled"
 import Loading from '../../Assets/gif-loading.gif'
+import CardStock from "../../Components/CardStock/CardStock"
 
 export default function Stock() {
     const [search, setSearch] = useState('')
@@ -28,8 +29,8 @@ export default function Stock() {
         .map((product, index) => {
             return (
                 <ContainerItemCard key={index}>
-                    <h3>{product.name}</h3>
-                    {product.qty_stock > 0 ? <h4>Quantidade em estoque: {product.qty_stock}</h4> : <p>Produto sem estoque</p>}
+                    <CardStock
+                    product={product} />
                 </ContainerItemCard>
             )
         })
