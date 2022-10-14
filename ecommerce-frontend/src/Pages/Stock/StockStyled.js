@@ -39,24 +39,6 @@ export const ContainerItemCard = styled.div`
     text-align: center;
     flex-wrap: wrap;
     justify-content: center;
-    h3{
-        color: #666;
-        font-size: 1.3rem;
-        font-family: 'Lato', sans-serif;
-        font-weight: 400;
-    }
-    h4{
-        color: rgb(45, 167, 122);
-        font-size: 1.3rem;
-        font-family: 'Lato', sans-serif;
-        font-weight: 400;
-    }
-    p{
-        color: rgb(184, 1, 7);
-        font-weight: 700;
-        font-size: 1.1em;
-        font-family: 'Lato', sans-serif;
-    }
 `
 
 export const Select = styled.select`
